@@ -176,16 +176,15 @@ public class StudentManagementConsole {
     
     private static void viewStudentDetails() {
         System.out.println("\n========== VIEW STUDENT DETAILS ==========");
-        System.out.print("Enter student ID: ");
-        int studentId = scanner.nextInt();
-        scanner.nextLine();
-        
-        Student student = StudentService.getStudentById(studentId);
-        if (student != null) {
-            System.out.println("\n" + student);
-        } else {
+        System.out.print("Enter student name (or part of the name): ");
+        String name = scanner.nextLine().trim();
+
+        java.util.LinkedHashSet<Student> matches = StudentService.getStudentsByName(name);
+        if (matches == null || matches.isEmpty()) {
             System.out.println("Student not found.");
+            return;
         }
+        StudentService.displayStudentsCollection(matches);
     }
     
     private static void updateStudent() {

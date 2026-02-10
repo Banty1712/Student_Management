@@ -117,6 +117,35 @@ public class StudentService {
         return null;
     }
 
+    public static LinkedHashSet<Student> getStudentsByName(String name) {
+        LinkedHashSet<Student> students = new LinkedHashSet<>();
+        String sql = "SELECT * FROM student WHERE LOWER(name) LIKE ?";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, "%" + name.toLowerCase() + "%");
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Student student = new Student(
+                            rs.getInt("student_id"),
+                            rs.getString("name"),
+                            rs.getString("email"),
+                            rs.getString("phone_number"),
+                            rs.getInt("branch_id"),
+                            rs.getDouble("cgpa"),
+                            rs.getString("enrollment_date"),
+                            rs.getString("student_type")
+                    );
+                    students.add(student);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error retrieving students by name: " + e.getMessage());
+        }
+        return students;
+    }
+
     public static boolean updateStudent(Student student) {
         String sql = "UPDATE student SET name = ?, email = ?, phone_number = ?, branch_id = ?, cgpa = ?, enrollment_date = ? WHERE student_id = ?";
         
