@@ -1,0 +1,23 @@
+# Build output
+bin/
+
+# IDE
+.vscode/
+
+# Libraries
+lib/*.jar
+
+# Database files
+*.mv.db
+*.trace.db
+
+# Logs and temp
+*.log
+*.tmp
+
+# Scripts
+run.ps1
+
+# OS files
+Thumbs.db
+.DS_Store
