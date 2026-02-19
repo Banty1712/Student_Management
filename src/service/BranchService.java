@@ -4,8 +4,7 @@ import model.Branch;
 import database.DatabaseConnection;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
 
 public class BranchService {
     
@@ -26,8 +25,8 @@ public class BranchService {
         }
     }
 
-    public static List<Branch> getAllBranches() {
-        List<Branch> branches = new ArrayList<>();
+    public static LinkedHashSet<Branch> getAllBranches() {
+        LinkedHashSet<Branch> branches = new LinkedHashSet<>();
         String sql = "SELECT * FROM branch";
         
         try (Connection conn = DatabaseConnection.getConnection();
@@ -106,7 +105,7 @@ public class BranchService {
     }
 
     public static void displayAllBranches() {
-        List<Branch> branches = getAllBranches();
+        LinkedHashSet<Branch> branches = getAllBranches();
         if (branches.isEmpty()) {
             System.out.println("No branches found.");
             return;

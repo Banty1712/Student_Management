@@ -1,0 +1,34 @@
+<!-- Tomcat Context Configuration for Student Management System -->
+<!-- Place this file in: TOMCAT_HOME\conf\Catalina\localhost\student-management.xml -->
+
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/student-management" docBase="student-management" debug="0">
+    <!-- Resource configuration for database connection pool (optional) -->
+    <!-- If you want to use JNDI connection pooling, uncomment and configure below -->
+    
+    <!-- 
+    <Resource 
+        name="jdbc/StudentManagementDB" 
+        auth="Container" 
+        type="javax.sql.DataSource" 
+        maxActive="100" 
+        maxIdle="30" 
+        maxWait="10000" 
+        username="root" 
+        password="your_password" 
+        driverClassName="com.mysql.cj.jdbc.Driver" 
+        url="jdbc:mysql://localhost:3306/student_management?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
+    -->
+    
+    <!-- Logger configuration -->
+    <Logger 
+        className="org.apache.catalina.logger.FileLogger" 
+        prefix="student-management_log." 
+        suffix=".txt" 
+        timestamp="true" 
+        verbosity="4" />
+    
+    <!-- Session Manager configuration -->
+    <Manager pathname="" />
+    
+</Context>

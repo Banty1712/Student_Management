@@ -1,0 +1,11 @@
+web\StudentServlet.class
+setup\SetupEnvironment.class
+model\Student.class
+ui\StudentManagementConsole.class
+database\DatabaseConnection.class
+model\Branch.class
+service\StudentService.class
+database\DatabaseInitializer.class
+service\BranchService.class
+web\BranchServlet.class
+web\IndexServlet.class
